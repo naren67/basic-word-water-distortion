@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <link rel="stylesheet" href="./style.css">
+          <script src="https://cdn.rawgit.com/bradley/Blotter/master/build/blotter.min.js"></script>
+          <script src="https://rawgit.com/bradley/Blotter/master/build/materials/liquidDistortMaterial.js"></script>
+</head>
+
+<body>
+          <!-- source
+          https://blotter.js.org/
+          https://rawgit.com/bradley/Blotter/master/build/materials/liquidDistortMaterial.js
+          https://cdn.rawgit.com/bradley/Blotter/master/build/blotter.min.js -->
+
+                    <div id="main"></div>
+
+          <script>
+                    container = document.getElementById('main') 
+
+                    const text = new Blotter.Text("could it be an image", {
+                              family: "serif",
+                              size: 80,
+                              fill: "black"
+                    });
+
+                    // let material = new Blotter.ChannelSplitMaterial();
+                    let material = new Blotter.LiquidDistortMaterial();
+
+                    // var blotter = new Blotter(material, { texts: text });
+
+                    // var scope = blotter.forText(text);
+
+                    material.uniforms.uSpeed.value = 0.2;
+                    material.uniforms.uVolatility.value = 0.1;
+                    material.uniforms.uSeed.value = 0.1;
+
+                    let blotter = new Blotter(material, {
+                    texts: text
+                    });
+
+                    let scope = blotter.forText(text);
+
+                    scope.appendTo(container);
+
+                    // scope.appendTo(document.body);
+          </script>
+</body>
+
+</html>
